@@ -16,7 +16,10 @@ pipeline {
 
         stage('Run tests') {
             steps {
-                sh 'mvn clean test'
+                sh '''
+                mvn clean test \
+                -Dremote=http://host.docker.internal:4444/wd/hub
+                '''
             }
         }
 

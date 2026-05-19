@@ -16,7 +16,11 @@ public class BaseTest {
 
     @BeforeAll
     public static void setUp() {
-        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.remote =
+                System.getProperty(
+                        "remote",
+                        "http://localhost:4444/wd/hub"
+                );
 
         SelenideLogger.addListener("allure", new AllureSelenide()
                 .screenshots(true)
